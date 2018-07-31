@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(From_Atoms_To)
+
+set(CMAKE_CXX_STANDARD 17)
+set(SFML_STATIC_LIBRARIES FALSE)
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/../libs/SFML/lib/cmake/SFML/")
+set(CMAKE_BUILD_TYPE DEBUG)
+set(SFML_DIR "${CMAKE_SOURCE_DIR}/../libs/SFML/lib/cmake/SFML/")
+find_package(SFML 2 COMPONENTS graphics audio system window REQUIRED)
+link_directories(${SFML_INCLUDE_DIR})
+set(SOURCE_FILES main.cpp   )
+set(HEADER_FILES            )
+add_executable(From_Atoms_To ${SOURCE_FILES} ${HEADER_FILES})
+if(SFML_FOUND )
+    include_directories(${SFML_INCLUDE_DIR})
+    target_link_libraries(From_Atoms_To sfml-graphics sfml-audio sfml-system)
+endif()
